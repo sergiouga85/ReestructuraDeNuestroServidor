@@ -1,9 +1,7 @@
 import { Schema, model } from 'mongoose'
-import { randomUUID } from 'crypto'
-import {hashear } from '../utils/criptografia.js'
 
 const schema = new Schema({
-  _id: { type: String, default: randomUUID },
+  _id: { type: String},
   first_name:{ type: String, required: true },
   last_name:{ type: String, required: true },
   username: { type: String, unique: true, required: true },

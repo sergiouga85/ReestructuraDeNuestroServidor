@@ -1,11 +1,12 @@
 import { usersManager } from '../models/User.js';
-
+import { randomUUID } from 'crypto'
 import { hasheadasSonIguales, hashear } from '../utils/criptografia.js'
 
 export class UserDAO {
 
   static createUser = async (userData) => {
     try {
+      userData.id= randomUUID()
       userData.password = hashear(userData.password)
       const user = await usersManager.create(userData)
       return user.toObject()
