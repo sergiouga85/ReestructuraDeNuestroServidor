@@ -5,12 +5,12 @@ import passport from 'passport';
 
 export const loginUser = async (req, res, next) => {
     try {
-    passport.authenticate('localLogin', {
+        passport.authenticate('localLogin', {
         failWithError: true,
         session: false
-      }),
-      appendJwtAsCookie,
-    res['successfullPost'](req.user);
+        }),
+        appendJwtAsCookie,
+        res['successfullPost'](req.user);
     } catch (error) {
         next(error);
     }
@@ -19,11 +19,11 @@ export const loginUser = async (req, res, next) => {
   
 export const getCurrentSessionUser = async (req, res, next) => {
     try {
-    passport.authenticate('jwtAuth', {
-        session: false
-      }),
-      usersOnly,
-    res['successfullGet'](req.user);
+        passport.authenticate('jwtAuth', {
+            session: false
+        }),
+        usersOnly,
+        res['successfullGet'](req.user);
     } catch (error) {
         next(error);
     }
@@ -31,8 +31,8 @@ export const getCurrentSessionUser = async (req, res, next) => {
   
 export const logoutUser = async (req, res, next) => {
     try {
-    removeJwtFromCookies,
-    res['successfullDelete']();
+        removeJwtFromCookies,
+        res['successfullDelete']();
     } catch (error) {
         next(error);
     }
